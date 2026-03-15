@@ -1,0 +1,563 @@
+/* 
+  Lumina Dental - Custom Styles 
+  Aesthetics: #00cae0 theme, Bootstrap integration, parallax, and advanced animations.
+*/
+
+:root {
+    /* New User Requested Color Palette */
+    --primary-color: #00cae0;
+    --primary-color-dark: #00a4b5;
+    --secondary-color: #1e293b;
+    --light-blue-bg: #e6fafe;
+    /* very light tint of primary */
+
+    --bg-light-modern: #f8fafc;
+    --text-muted: #64748b;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #334155;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll from AOS */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar .logo {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* ================= Utilities & Theming ================= */
+.text-primary-color {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary-color {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-primary-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, rgba(0, 202, 224, 0.7) 100%) !important;
+}
+
+.bg-light-modern {
+    background-color: var(--bg-light-modern) !important;
+}
+
+.hover-text-primary:hover {
+    color: var(--primary-color) !important;
+}
+
+.transition-colors {
+    transition: color 0.3s ease;
+}
+
+.custom-badge {
+    background-color: rgba(0, 202, 224, 0.1);
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.custom-btn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-btn:hover {
+    background-color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 202, 224, 0.3) !important;
+}
+
+.custom-outline-btn {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.custom-outline-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* ================= Navbar ================= */
+.transition-navbar {
+    transition: all 0.4s ease;
+    padding: 20px 0;
+    background: transparent;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.navbar .logo-icon {
+    font-size: 1.8rem;
+}
+
+/* Text colors transition based on scroll */
+.navbar:not(.scrolled) .logo,
+.navbar:not(.scrolled) .contact-number {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar.scrolled .logo,
+.navbar.scrolled .contact-number {
+    color: var(--secondary-color) !important;
+}
+
+.navbar:not(.scrolled) .logo-icon {
+    color: white;
+}
+
+.navbar.scrolled .logo-icon {
+    color: var(--primary-color);
+}
+
+.navbar.scrolled .logo-text span {
+    color: var(--primary-color);
+    font-weight: 400;
+}
+
+
+/* ================= Hero Slider & Parallax ================= */
+.hero {
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+}
+
+.hero-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.parallax-bg {
+    width: 100%;
+    height: 110%;
+    /* Extra height for parallax movement */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax Effect */
+    transform: scale(1.05);
+    /* Slight scale for slow zoom effect */
+    transition: transform 10s linear;
+}
+
+.slide.active .parallax-bg {
+    transform: scale(1);
+    background-position: center bottom;
+    /* move it slightly to enhance parallax feel */
+}
+
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%);
+}
+
+.hero-title span {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-title span::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background-color: var(--primary-color);
+    opacity: 0.3;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.z-index-2 {
+    z-index: 2;
+}
+
+.z-index-3 {
+    z-index: 3;
+}
+
+/* Desktop slider controls */
+.slider-controls {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+    display: flex;
+    gap: 15px;
+}
+
+.slider-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* ================= Custom Form ================= */
+.pull-up-card {
+    margin-top: -100px;
+    /* Pull over hero */
+}
+
+.parallax-inner {
+    background-attachment: fixed;
+    background-position: right center;
+}
+
+.circle-decoration {
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.custom-input-group .form-control,
+.custom-input-group .form-select,
+.custom-input-group .input-group-text,
+.custom-textarea {
+    border-color: #e2e8f0;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+
+.custom-input-group .form-control:focus,
+.custom-input-group .form-select:focus,
+.custom-textarea:focus {
+    box-shadow: 0 0 0 4px rgba(0, 202, 224, 0.15);
+    border-color: var(--primary-color);
+    background-color: white !important;
+}
+
+.custom-input-group .form-control:focus+.input-group-text {
+    border-color: var(--primary-color);
+}
+
+/* ================= Services Twinwing ================= */
+.hover-lift {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+}
+
+.service-icon-box {
+    width: 70px;
+    height: 70px;
+    background-color: var(--light-blue-bg);
+    color: var(--primary-color);
+    transition: all 0.4s ease;
+}
+
+.hover-lift:hover .service-icon-box {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.transition-icon {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover .transition-icon {
+    transform: translateX(8px);
+}
+
+/* ================= Gallery Parallax Masonry ================= */
+.gallery-grid-modern .gallery-img-wrapper {
+    cursor: pointer;
+}
+
+.gallery-grid-modern img {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Scale up visually but let AOS handle the entrance */
+.gallery-img-wrapper:hover img {
+    transform: scale(1.1) translateY(-10px);
+    /* Twinwing style subtle up parallax */
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-img-wrapper:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.transform-up {
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gallery-img-wrapper:hover .transform-up {
+    transform: translateY(0);
+}
+
+/* ================= Parallax Video Toue ================= */
+.hover-darken {
+    transition: background-color 0.4s ease;
+}
+
+.group-hover:hover .hover-darken {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.scale-on-hover {
+    transition: transform 0.7s ease;
+}
+
+.group-hover:hover .scale-on-hover {
+    transform: scale(1.05);
+}
+
+.play-pulse {
+    animation: playPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.group-hover:hover .play-pulse {
+    transform: scale(1.1);
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+@keyframes playPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+/* ================= Reviews Bounce ================= */
+.review-bounce {
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.review-bounce:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ================= FAQ & Custom Accordion ================= */
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+    background-color: var(--light-blue-bg);
+    color: var(--primary-color) !important;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
+}
+
+.custom-accordion .accordion-button:focus {
+    border-color: rgba(0, 202, 224, 0.5);
+    box-shadow: 0 0 0 0.25rem rgba(0, 202, 224, 0.25);
+}
+
+.custom-accordion .accordion-button::after {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ================= Bottom CTA ================= */
+.parallax-section {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* ================= Doctor Profiles (Text-Based) ================= */
+.doctor-profile-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.doctor-profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--primary-gradient);
+}
+
+.doctor-profile-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(10, 189, 219, 0.1);
+}
+
+.doctor-initials-badge {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-gradient);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(10, 189, 219, 0.3);
+}
+
+.doctor-name {
+    color: var(--secondary-color);
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+.doctor-specialty {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.doctor-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.doctor-icon-watermark {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    font-size: 12rem;
+    color: rgba(10, 189, 219, 0.03);
+    transform: rotate(-15deg);
+    pointer-events: none;
+}
+
+/* ================= Responsive Tuning ================= */
+@media (max-width: 991px) {
+    .pull-up-card {
+        margin-top: -50px;
+    }
+
+    .hero-title {
+        font-size: 3rem !important;
+    }
+
+    .hero-desc-mobile {
+        width: 100% !important;
+    }
+
+    .slider-controls {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+
+    .circle-decoration {
+        display: none;
+    }
+
+    .parallax-bg {
+        background-attachment: scroll;
+        /* Disable parallax on mobile for performance */
+    }
+}
